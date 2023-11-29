@@ -1,8 +1,14 @@
 import NameList from './components/NameList';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import HeaderBar from './components/HeaderBar';
 
 function App() {
   return (
-    <NameList />
+    <div>
+      <HeaderBar />
+      <NameList />
+    </div>
+    
   );
 }
 

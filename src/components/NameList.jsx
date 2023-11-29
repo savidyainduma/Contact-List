@@ -57,11 +57,12 @@ const nameListComponent = ()=>{
 
   return (
     <div>
-        <h1>Contact List</h1>
-        <hr></hr>
-        <ul>
+      <div className='container mt-4'>
+      <ul className='list-group'>
             {nameListComponent()}         
         </ul>
+      </div>
+        
         
     </div>
     
