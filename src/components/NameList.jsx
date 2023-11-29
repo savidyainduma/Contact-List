@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import NamelistItem from './NamelistItem'
 
 function NameList() {
-  const nameList = [{
+  const [loadData, setLoadData] = useState(new Date())
+  const [nameList, setNameList] = useState([{
     id: 1,
     name: {
       first: "Edouard",
@@ -36,7 +37,16 @@ function NameList() {
     dob: {date: "1970-02-14"},
     picture: {medium: "https://randomuser.me/api/portraits/med/men/74.jpg"}
   }
-]
+]);
+useEffect(() => {
+  fetch('https://randomuser.me/api')
+  .then((response) => {
+    return response.json();
+  })
+  .then((responseData) => {
+    setNameList((nameList)=> [...nameList, responseData.results[0]]);
+  });
+}, [loadData]);
 
 const nameListComponent = ()=>{
   return nameList.map((aName)=> {
@@ -55,9 +65,15 @@ const nameListComponent = ()=>{
   
 }
 
+const addUserHandler = ()=> {
+  
+  setLoadData(new Date());
+};
+
   return (
     <div>
       <div className='container mt-4'>
+        <button className='btn btn-primary mb-2' onClick={addUserHandler}>Add Name</button>
       <ul className='list-group'>
             {nameListComponent()}         
         </ul>
