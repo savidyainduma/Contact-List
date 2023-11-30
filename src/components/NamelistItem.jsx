@@ -4,7 +4,7 @@ function NamelistItem(props) {
   return (
     <ul>
         <li className='list-group-item'>
-          <div className='row align-items-center'>
+          <div className='row align-items-center rounded'>
             <div className='col-2'>
             <img className='border border-dark rounded-circle shadow-sm' src={props.picture} />
             </div>
